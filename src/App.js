@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import 'antd/dist/antd.css'
+import {Routes, Route } from "react-router-dom";
+import UserFind from './MianPage/UserFind';
+import Menu from './MianPage/Menu';
+import Results from './MianPage/Results';
+import {resultContext} from './Context/ResultContext'
+import { useState } from 'react';
+
+
+
 
 function App() {
+
+  const [results,setResults] = useState([]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <resultContext.Provider value={{results,setResults}}>
+      <Routes>
+            <Route exact path='/' element ={<Menu />} />
+            <Route exact path='/userfind' element ={<UserFind />} />
+            <Route exact path='/results' element ={<Results />} />
+      </Routes>
+    </resultContext.Provider>
   );
 }
 
