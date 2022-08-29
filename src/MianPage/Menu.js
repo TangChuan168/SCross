@@ -1,5 +1,5 @@
 import { Button } from 'antd'
-import { SearchOutlined,DatabaseOutlined } from '@ant-design/icons';
+import { SearchOutlined,DatabaseOutlined,LeftOutlined  } from '@ant-design/icons';
 import React,{ useState } from 'react'
 import {Link} from "react-router-dom"
 
@@ -16,7 +16,7 @@ const Menu = () => {
         <Link to={'/results'}><Button type="primary" block icon={<DatabaseOutlined />} >Search Results</Button></Link>
     </div>
   const Btn = <div style={{display:'flex',justifyContent:'center',alignItems:'center',padding:'245px'}}>
-    <Button type='primary' onClick={()=>setOpen(!open)}>Open Menu</Button>
+    <Button icon={<LeftOutlined />} type='primary' onClick={()=>setOpen(!open)}>Open Menu</Button>
     </div>
   return (
     <>

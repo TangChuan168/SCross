@@ -56,10 +56,14 @@ const UserFind = () => {
             responseType:"json",
             data:userinfo
         })
-        console.log('callback data is :',data);
-        setResult(data); //update current state
-        setResults([...results,data]); // push search result to global state
-        console.log('#123',results);
+        //console.log('callback data is :',data);
+        if(data.isExist ===false){
+          setResult(data); //isxist is false
+        }else{
+          setResult(data); //update current state
+          setResults([...results,data]); // push search result to global state
+          console.log('#123',results);
+        }
       }
     
       const onReset = () => {
@@ -121,12 +125,18 @@ const UserFind = () => {
                     <div
                     style={{display:'flex',justifyContent:'center',alignItems:'center'}}
                     ><Card
-                    title="Current User's Info"
+                    title={searchResult.isExist? "Current User's Info":"User not found"}
                     style={{ width: 250 }}             
                     >
-                        <p>First Name:<span style={{float:'right'}}>{searchResult.firstName}</span> </p>
-                        <p>Last Name:<span style={{float:'right'}}>{searchResult.lastName}</span> </p>
-                        <p>DOB:<span style={{float:'right'}}> {searchResult.dob}</span></p>
+                      {
+                        searchResult.isExist?                         
+                        <div>
+                          <p>First Name:<span style={{float:'right'}}>{searchResult.firstName}</span> </p>
+                          <p>Last Name:<span style={{float:'right'}}>{searchResult.lastName}</span> </p>
+                          <p>DOB:<span style={{float:'right'}}> {searchResult.dob}</span></p>
+                        </div> :''
+
+                      }
                     </Card></div>:''
                 }
             </Form>
