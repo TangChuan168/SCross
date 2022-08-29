@@ -1,7 +1,7 @@
-@ system design 
+-system design- 
 there are mianly 3 components in this app.(menu component,member research component and search results component),they all share a global state called resultContext.research component can update returned user data to resultContext, search results can access these data and render to page.
 
-@limitation 
+-limitation- 
 the search results stored in resultContext are not permanent, its life cycle ends when you close the page or refresh the page.
 
 1.Getting Started to use this app
